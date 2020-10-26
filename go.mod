@@ -1,4 +1,4 @@
-module gotoolkit
+module github.com/tuzaix/gotoolkit
 
 go 1.14
 
