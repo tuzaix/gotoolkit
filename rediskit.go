@@ -3,7 +3,7 @@ package gotoolkit
 
 import (
 	"fmt"
-	"github.com/garyburd/redigo/redis"
+	"github.com/gomodule/redigo/redis"
 	"math/rand"
 	"time"
 )
@@ -37,6 +37,7 @@ func NewRedisPool(host string, port, maxIdle, idleTimeout, connectTimeout, readT
 					err  error
 				)
 				if conn, err = redis.Dial("tcp", _url, redis.DialConnectTimeout(_connectTO), redis.DialReadTimeout(_readTO), redis.DialWriteTimeout(_writeTO)); err != nil {
+					panic(err)
 					return nil, err
 				}
 				if _, err = conn.Do("EXISTS", rand.Int63n(1000)); err != nil {
